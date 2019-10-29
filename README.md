@@ -18,7 +18,7 @@ K - number of centroids <br>
 K - number of centroids <br>
 K = 7 <br>
 <br>
-![Alt Text](docs/demo_assets/points-visualization.gif)
+![Alt Text](docs/demo_assets/points_visualization.gif)
 
 #### Set up
 Create new virtualenv:

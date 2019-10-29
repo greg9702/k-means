@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib
 from matplotlib import pyplot
 from matplotlib.animation import FuncAnimation
-
+from collections import Counter
 
 def draw_image(idx, centroids, width, height):
     """
@@ -63,16 +63,18 @@ def find_closest_centroids(data, centroids):
     :return np.array: vector of record numbers of centroids assigned to every
         point in data
     """
-
     k = centroids.shape[0]
+
     idx = np.zeros(data.shape[0], dtype=int)
     distance = np.zeros(k)
+
     for example in range(data.shape[0]):
         for cent in range(k):
             distance[cent] = np.sqrt(np.sum(np.power((data[example, :] -
                                                       centroids[cent, :]), 2)))
 
         idx[example] = np.argmin(distance)
+
     return idx
 
 
@@ -86,7 +88,6 @@ def generate_new_centroids(data, idx, k):
     :param int k: number of centroids
     :return np.array: matrix of locations of new centroids
     """
-
     m, n = data.shape
     centroids = np.zeros((k, n))
 
@@ -102,12 +103,13 @@ def draw_points_animation(data, idx_history, centroid_history):
     Create window for points visualization
 
     :param np.array data: array containing points coordinates
-    :param np.array idx_history: saved idx_history for every step
+    :param list idx_history: list of idx lists for every algorithm step
     :param np.array centroid_history: saved centroids_history for every step
-    :return:
     """
-    print('running animation')
+    print('Running animation...')
+
     fig = pyplot.figure()
+
     animation = FuncAnimation(fig, plot_progress_means,
                               frames=len(idx_history),
                               interval=500,
@@ -122,11 +124,12 @@ def plot_progress_means(i, data, centroid_history, idx_history):
 
     :param np.array data: array containing points
     :param np.array centroid_history: saved centroids_history for every step
-    :param np.array centroid_history: saved centroids_history for every step
+    :param list idx_history: saved centroids_history for every step
     """
     K = centroid_history[0].shape[0]
+
     pyplot.gcf().clf()
-    cmap = pyplot.cm.hsv
+    cmap = pyplot.cm.rainbow
 
     for k in range(K):
         pyplot.scatter(data[:, 0], data[:, 1],
