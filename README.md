@@ -16,7 +16,7 @@ K - number of centroids <br>
 
 #### Points visualization demo
 K - number of centroids <br>
-K = 7 <br>
+K = 4 <br>
 <br>
 ![Alt Text](docs/demo_assets/points_visualization.gif)
 
