@@ -18,7 +18,7 @@ class RUN_MODE(Enum):
 SET_RUN_MODE = 0
 
 
-def run(data, centroids, max_iters=20):
+def run(data, centroids, max_iters=settings.MAX_ITERS):
     """
     Run algorithm, in POINTS mode save metadata to history
 

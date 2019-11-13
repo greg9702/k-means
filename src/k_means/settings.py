@@ -7,6 +7,9 @@ NUMBER_OF_POINTS = 1000
 # point dimension
 DIMENSION = 2
 
+# maximum number of iterations
+MAX_ITERS = 5
+
 # name of source file in data directory,
 # if set to None, file name will be automatically generated
 # this file is also used as image loader to save RGB data
